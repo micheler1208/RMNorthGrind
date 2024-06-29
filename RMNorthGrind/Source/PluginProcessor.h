@@ -1,7 +1,8 @@
 /*
   ==============================================================================
 
-    This file contains the basic framework code for a JUCE plugin processor.
+    PluginProcessor.h
+    Author:  micheler1208
 
   ==============================================================================
 */
@@ -13,12 +14,12 @@
 //==============================================================================
 /**
 */
-class NorthGrindAudioProcessor  : public juce::AudioProcessor
+class RMNorthGrindAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    NorthGrindAudioProcessor();
-    ~NorthGrindAudioProcessor() override;
+    RMNorthGrindAudioProcessor();
+    ~RMNorthGrindAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -55,5 +56,5 @@ public:
 
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NorthGrindAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RMNorthGrindAudioProcessor)
 };
