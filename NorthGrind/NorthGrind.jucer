@@ -5,6 +5,14 @@
               headerPath="C:\D\MIKE-VST\WORKSPACE JUCE\JUCE\modules\asioCommon">
   <MAINGROUP id="aLKbL1" name="NorthGrind">
     <GROUP id="{05612D06-4E5C-1F1F-CDA0-0275535E9B80}" name="Source">
+      <GROUP id="{EA3DEE47-26D6-9220-EACB-2FBCB5AEC890}" name="UI"/>
+      <GROUP id="{EB64B216-1693-BD31-F401-1E39282CFA7E}" name="Img">
+        <FILE id="Cb6Ysx" name="background.jpg" compile="0" resource="1" file="Source/Img/background.jpg"/>
+      </GROUP>
+      <GROUP id="{29721AD3-70EE-3546-14A4-AF6361D7A5B5}" name="Font">
+        <FILE id="PyyXCb" name="timegoing.ttf" compile="0" resource="1" file="Source/Font/timegoing.ttf"/>
+      </GROUP>
+      <GROUP id="{4B3A902D-BFC0-E250-5CE2-A5600DAC8DBC}" name="Data"/>
       <FILE id="IdiTNr" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="jqtvWa" name="PluginProcessor.h" compile="0" resource="0"

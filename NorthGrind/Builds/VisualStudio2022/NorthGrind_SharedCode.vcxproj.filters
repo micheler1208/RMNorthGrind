@@ -2,6 +2,12 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="NorthGrind\Source\Img">
+      <UniqueIdentifier>{F407459E-59E5-B738-3F63-717A344E45F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NorthGrind\Source\Font">
+      <UniqueIdentifier>{A273C9C5-6D51-BA78-2C27-2BF959091068}</UniqueIdentifier>
+    </Filter>
     <Filter Include="NorthGrind\Source">
       <UniqueIdentifier>{2AA74B0D-5D8D-FDF5-5B78-40E19D0961ED}</UniqueIdentifier>
     </Filter>
@@ -3181,6 +3187,9 @@
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.mm">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -6264,6 +6273,9 @@
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
@@ -6272,6 +6284,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\Img\background.jpg">
+      <Filter>NorthGrind\Source\Img</Filter>
+    </None>
+    <None Include="..\..\Source\Font\timegoing.ttf">
+      <Filter>NorthGrind\Source\Font</Filter>
+    </None>
     <None Include="..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\common</Filter>
     </None>
