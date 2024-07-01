@@ -12,11 +12,20 @@
 
 //==============================================================================
 RMNorthGrindAudioProcessorEditor::RMNorthGrindAudioProcessorEditor (RMNorthGrindAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p),
+    audioProcessor (p),
+    noiseGate(audioProcessor.apvts), 
+    grind(audioProcessor.apvts)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
+    
+    // WINDOW SIZE
     setSize (384, 698);
+    
+    // NOISE GATE ENABLE
+    addAndMakeVisible(noiseGate);
+
+    // GRIND ENABLE
+    addAndMakeVisible(grind);
 }
 
 RMNorthGrindAudioProcessorEditor::~RMNorthGrindAudioProcessorEditor()
@@ -48,4 +57,22 @@ void RMNorthGrindAudioProcessorEditor::paint (juce::Graphics& g)
 
 void RMNorthGrindAudioProcessorEditor::resized()
 {
+    auto area = getLocalBounds().reduced(20);
+
+    int sliderWidth = 80;
+    int sliderHeight = 80;
+    int spacing = 20;
+    int extraLeftMargin = 25;
+    int labelHeight = 20;
+
+    int totalWidth = 5 * sliderWidth + 4 * spacing;
+    int startX = (area.getWidth() - totalWidth) / 2 + extraLeftMargin;
+    int startY = area.getHeight() - sliderHeight - labelHeight - 40;
+    
+    
+    grind.setBounds(53, 50, getWidth() / 2, 150);
+
+    noiseGate.setBounds(getWidth()/2 + 53, 50, getWidth() / 2, 150);
+    
+
 }
