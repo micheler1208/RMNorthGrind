@@ -13,9 +13,9 @@
 
 // CONSTRUCTOR
 RMNorthGrindAudioProcessor::RMNorthGrindAudioProcessor()
-     : AudioProcessor (BusesProperties()
-                       .withInput  ("Input",  juce::AudioChannelSet::mono(), true)
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true),
+    : AudioProcessor(BusesProperties()
+        .withInput("Input", juce::AudioChannelSet::mono(), true)
+        .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
     apvts(*this, nullptr, "PARAMETERS", createParams())
 {
 }
@@ -55,7 +55,7 @@ void RMNorthGrindAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     if (totalNumInputChannels > 0 && totalNumOutputChannels > 0)
     {
         // Update parameters
-        float noideGateValue = apvts.getRawParameterValue("NOISEGATE")->load();
+        float noiseGateValue = apvts.getRawParameterValue("NOISEGATE")->load();
         noiseGate.updateValue(noiseGateValue);
         
         float grindValue = apvts.getRawParameterValue("GRIND")->load();
@@ -184,17 +184,15 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 }
 
 // CREATE PARAMETERS
-juce::AudioProcessorValueTreeState::ParameterLayout RMSouthOverdriveAudioProcessor::createParams()
+juce::AudioProcessorValueTreeState::ParameterLayout RMNorthGrindAudioProcessor::createParams()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-
-
-    // Grind
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("GRIND", "Grind", juce::NormalisableRange<float> { 0.0f, 1.0f, }, 0.0f));
 
     // Noise Gate
     params.push_back(std::make_unique<juce::AudioParameterFloat>("NOISEGATE", "Noise Gate", -96.0f, 0.0f, -80.0f));
 
+    // Grind
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("GRIND", "Grind", juce::NormalisableRange<float> { 0.0f, 1.0f, }, 0.0f));
 
     return { params.begin(), params.end() };
 }

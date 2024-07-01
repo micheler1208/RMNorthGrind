@@ -8,6 +8,9 @@
 
 namespace BinaryData
 {
+    extern const char*   caviar_ttf;
+    const int            caviar_ttfSize = 59284;
+
     extern const char*   timegoing_ttf;
     const int            timegoing_ttfSize = 62108;
 
@@ -15,7 +18,7 @@ namespace BinaryData
     const int            background_jpgSize = 91891;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 2;
+    const int namedResourceListSize = 3;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

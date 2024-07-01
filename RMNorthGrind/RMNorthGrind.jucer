@@ -13,6 +13,9 @@
         <FILE id="oSfrpK" name="NoiseGateData.h" compile="0" resource="0" file="Source/Data/NoiseGateData.h"/>
       </GROUP>
       <GROUP id="{EA3DEE47-26D6-9220-EACB-2FBCB5AEC890}" name="UI">
+        <FILE id="Hr5O4m" name="CustomLookAndFeelGrind.h" compile="0" resource="0"
+              file="Source/UI/CustomLookAndFeelGrind.h"/>
+        <FILE id="Lu5jBX" name="CustomSlider.h" compile="0" resource="0" file="Source/UI/CustomSlider.h"/>
         <FILE id="f9wp1T" name="GrindComponent.cpp" compile="1" resource="0"
               file="Source/UI/GrindComponent.cpp"/>
         <FILE id="z6Y5tm" name="GrindComponent.h" compile="0" resource="0"
@@ -23,6 +26,7 @@
               file="Source/UI/NoiseGateComponent.h"/>
       </GROUP>
       <GROUP id="{29721AD3-70EE-3546-14A4-AF6361D7A5B5}" name="Font">
+        <FILE id="uZpSX0" name="caviar.ttf" compile="0" resource="1" file="Source/Font/caviar.ttf"/>
         <FILE id="PyyXCb" name="timegoing.ttf" compile="0" resource="1" file="Source/Font/timegoing.ttf"/>
       </GROUP>
       <GROUP id="{EB64B216-1693-BD31-F401-1E39282CFA7E}" name="Img">

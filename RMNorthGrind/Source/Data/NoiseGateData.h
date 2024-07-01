@@ -13,6 +13,7 @@
 class NoiseGateData
 {
 public:
+    NoiseGateData();
     void prepareToPlay();
     void process(juce::AudioBuffer<float>& buffer);
     void updateValue(float newThreshold);

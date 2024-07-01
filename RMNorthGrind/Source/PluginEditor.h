@@ -30,10 +30,10 @@ private:
     juce::Image backgroundImage;
     
     // NOISE GATE
-    NoiseGateData noiseGate;
+    NoiseGateComponent noiseGate;
     
     //GRIND
-    GrindData grind;
+    GrindComponent grind;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RMNorthGrindAudioProcessorEditor)
 };

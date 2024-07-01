@@ -9,6 +9,12 @@
 
 #include "NoiseGateData.h"
 
+// COSTRUCTOR
+NoiseGateData::NoiseGateData()
+    : threshold(-80.0f)
+{
+}
+
 // PREPARE TO PLAY
 void NoiseGateData::prepareToPlay()
 {
