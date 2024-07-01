@@ -17,7 +17,7 @@ NoiseGateComponent::NoiseGateComponent(juce::AudioProcessorValueTreeState& apvts
 {
     using SliderAttachment = juce::AudioProcessorValueTreeState::SliderAttachment;
 
-    // VOLUME SLIDER
+    // NOISE GATE SLIDER
     noiseGateSlider.setLookAndFeel(&customLookAndFeelGrind);
     noiseGateSlider.setName("NoiseGate");
     noiseGateSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
@@ -30,10 +30,10 @@ NoiseGateComponent::NoiseGateComponent(juce::AudioProcessorValueTreeState& apvts
     juce::Font labelFont = juce::Font(juce::Typeface::createSystemTypefaceFor(BinaryData::timegoing_ttf, BinaryData::timegoing_ttfSize));
     labelFont.setHeight(48.0f);
 
-    // VOLUME SLIDER
+    // NOISE GATE LABEL
     noiseGateLabel.setText("Noise Gate", juce::dontSendNotification);
     noiseGateLabel.setFont(labelFont);
-    noiseGateLabel.setColour(juce::Label::textColourId, juce::Colour::fromRGB(248, 255, 209));
+    noiseGateLabel.setColour(juce::Label::textColourId, juce::Colour::fromRGB(234, 236, 233));
     noiseGateLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(&noiseGateLabel);
 }
@@ -50,6 +50,6 @@ void NoiseGateComponent::paint (juce::Graphics& g)
 
 void NoiseGateComponent::resized()
 {
-    noiseGateLabel.setBounds(0, 0, 75, 40);
-    noiseGateSlider.setBounds(0, 40, 75, 75);
+    noiseGateLabel.setBounds(0, 0, 150, 40);
+    noiseGateSlider.setBounds(40, 40, 75, 75);
 }

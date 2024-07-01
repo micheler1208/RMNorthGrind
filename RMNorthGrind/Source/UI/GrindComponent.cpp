@@ -33,7 +33,7 @@ GrindComponent::GrindComponent(juce::AudioProcessorValueTreeState& apvts)
     // DRIVE LABEL
     grindLabel.setText("Grind", juce::dontSendNotification);
     grindLabel.setFont(labelFont);
-    grindLabel.setColour(juce::Label::textColourId, juce::Colour::fromRGB(248, 255, 209));
+    grindLabel.setColour(juce::Label::textColourId, juce::Colour::fromRGB(234, 236, 233));
     grindLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(&grindLabel);
 

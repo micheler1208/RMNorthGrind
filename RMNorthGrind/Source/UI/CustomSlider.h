@@ -38,7 +38,7 @@ protected:
         else if ( getName() == "Grind")
         {
             suffix = " %";
-            textValue = juce::String(value * 100.0, 0);
+            textValue = juce::String(value, 0);
         }
 
         return textValue + suffix;
@@ -51,7 +51,6 @@ protected:
 
         if (getName() == "Grind")
         {
-            value /= 100.0;
         }
 
         return value;

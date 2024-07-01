@@ -52,7 +52,7 @@ void RMNorthGrindAudioProcessorEditor::paint (juce::Graphics& g)
     titleFont.setHeight(64.0f);
     g.setFont(titleFont);
     g.setColour(juce::Colour::fromRGB(118, 5, 11));
-    g.drawFittedText("RM - NORTH GRIND", getLocalBounds().removeFromTop(70), juce::Justification::centred, 1);
+    g.drawFittedText("RM - NORTH GRIND", getLocalBounds().removeFromTop(80), juce::Justification::centred, 1);
 }
 
 void RMNorthGrindAudioProcessorEditor::resized()
@@ -70,9 +70,9 @@ void RMNorthGrindAudioProcessorEditor::resized()
     int startY = area.getHeight() - sliderHeight - labelHeight - 40;
     
     
-    grind.setBounds(53, 50, getWidth() / 2, 150);
+    grind.setBounds(58, 100, getWidth(), 150);
 
-    noiseGate.setBounds(getWidth()/2 + 53, 50, getWidth() / 2, 150);
+    noiseGate.setBounds(18, 230, getWidth(), 150);
     
 
 }

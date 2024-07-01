@@ -36,13 +36,13 @@ public:
         g.fillEllipse(rx, ry, rw, rw);
 
         // Arc of the circle
-        g.setColour(juce::Colour::fromRGB(248, 255, 209));
+        g.setColour(juce::Colour::fromRGB(234, 236, 233));
         juce::Path filledArc;
         filledArc.addPieSegment(rx, ry, rw, rw, rotaryStartAngle, rotaryEndAngle, 0.8f);
         g.fillPath(filledArc);
 
         // Filled Arc
-        g.setColour(juce::Colour::fromRGB(62, 41, 36));
+        g.setColour(juce::Colour::fromRGB(118, 5, 11));
         filledArc.clear();
         filledArc.addPieSegment(rx, ry, rw, rw, rotaryStartAngle, angle, 0.8f);
         g.fillPath(filledArc);
@@ -51,7 +51,7 @@ public:
         juce::Path thumb;
         const float thumbWidth = 4.0f;
         thumb.addRectangle(-thumbWidth / 2, -radius, thumbWidth, radius * 0.6f);
-        g.setColour(juce::Colour::fromRGB(62, 41, 36));
+        g.setColour(juce::Colour::fromRGB(118, 5, 11));
         g.fillPath(thumb, juce::AffineTransform::rotation(angle).translated(centreX, centreY));
     }
 

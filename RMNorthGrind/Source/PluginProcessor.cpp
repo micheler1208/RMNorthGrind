@@ -192,7 +192,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout RMNorthGrindAudioProcessor::
     params.push_back(std::make_unique<juce::AudioParameterFloat>("NOISEGATE", "Noise Gate", -96.0f, 0.0f, -80.0f));
 
     // Grind
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("GRIND", "Grind", juce::NormalisableRange<float> { 0.0f, 1.0f, }, 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("GRIND", "Grind", juce::NormalisableRange<float> { 1.0f, 20.0f, }, 1.0f));
 
     return { params.begin(), params.end() };
 }
