@@ -19,7 +19,6 @@ NoiseGateData::NoiseGateData()
 void NoiseGateData::prepareToPlay()
 {
     reset();
-    threshold = -80.0f;
     isPrepared = true;
 }
 
@@ -27,19 +26,32 @@ void NoiseGateData::prepareToPlay()
 void NoiseGateData::process(juce::AudioBuffer<float>& buffer)
 {
     jassert(isPrepared);
-    
+
+    float attackCoeff = std::exp(-1.0f / (sampleRate * attackTime));
+    float releaseCoeff = std::exp(-1.0f / (sampleRate * releaseTime));
+
     for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
     {
         auto* channelData = buffer.getWritePointer(channel);
 
         for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
         {
-            if (juce::Decibels::gainToDecibels(channelData[sample]) < threshold)
-            {
-                channelData[sample] = 0.0f;
-            }
+            calculateEnvelope(channelData[sample]);
+
+            if (juce::Decibels::gainToDecibels(envelope) < threshold)
+                currentGain = currentGain * releaseCoeff;
+            else
+                currentGain = 1.0f - (1.0f - currentGain) * attackCoeff;
+
+            channelData[sample] *= currentGain;
         }
     }
+}
+
+void NoiseGateData::calculateEnvelope(float sample)
+{
+    float absSample = std::abs(sample);
+    envelope = std::max(envelope * 0.99f, absSample);
 }
 
 void NoiseGateData::updateValue(float newThreshold)
@@ -51,4 +63,6 @@ void NoiseGateData::updateValue(float newThreshold)
 void NoiseGateData::reset()
 {
     threshold = -80.0f;
+    envelope = 0.0f;
+    currentGain = 1.0f;
 }

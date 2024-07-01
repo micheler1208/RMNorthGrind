@@ -20,9 +20,18 @@ public:
     void reset();
 
 private:
-    bool isPrepared { false };
-    float sampleRate;
+    bool isPrepared{ false };
     float threshold;
+    double sampleRate;
+
+    float attackTime = 0.01f;  // 10 ms
+    float releaseTime = 0.1f;  // 100 ms
+
+    float currentGain = 1.0f;
+    float envelope = 0.0f;
+
+    void calculateEnvelope(float sample);
+    void calculateGain();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(NoiseGateData)
 };
