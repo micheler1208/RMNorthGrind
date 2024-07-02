@@ -14,7 +14,7 @@ class NoiseGateData
 {
 public:
     NoiseGateData();
-    void prepareToPlay();
+    void prepareToPlay(double sampleRate);
     void process(juce::AudioBuffer<float>& buffer);
     void updateValue(float newThreshold);
     void reset();
@@ -26,12 +26,11 @@ private:
 
     float attackTime = 0.01f;  // 10 ms
     float releaseTime = 0.1f;  // 100 ms
-
     float currentGain = 1.0f;
     float envelope = 0.0f;
 
     void calculateEnvelope(float sample);
-    void calculateGain();
+    void applyGainSmoothing();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(NoiseGateData)
 };

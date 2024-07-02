@@ -59,6 +59,6 @@ void GrindData::updateFilters(double sampleRate)
     *highPassFilter.state = *highPassCoefficients;
 
     // Esempio di EQ fissa: un filtro peak/notch per esaltare le medie frequenze a 3 kHz
-    auto eqCoefficients = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 3000.0, 1.0f, juce::Decibels::decibelsToGain(3.0f)); // Peak a 3 kHz, Q=1.0, Gain=3dB
+    auto eqCoefficients = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 2700.0, 1.0f, juce::Decibels::decibelsToGain(3.0f)); // Peak a 3 kHz, Q=1.0, Gain=3dB
     *fixedEQFilter.state = *eqCoefficients;
 }

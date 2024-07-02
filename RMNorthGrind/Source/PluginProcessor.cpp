@@ -34,7 +34,7 @@ void RMNorthGrindAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
     spec.maximumBlockSize = static_cast<juce::uint32>(samplesPerBlock);
     spec.numChannels = getTotalNumOutputChannels();
 
-    noiseGate.prepareToPlay();
+    noiseGate.prepareToPlay(spec.sampleRate);
     grind.prepareToPlay(spec);
 }
 

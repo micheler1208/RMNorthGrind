@@ -16,9 +16,10 @@ NoiseGateData::NoiseGateData()
 }
 
 // PREPARE TO PLAY
-void NoiseGateData::prepareToPlay()
+void NoiseGateData::prepareToPlay(double newSampleRate)
 {
     reset();
+    sampleRate = newSampleRate;
     isPrepared = true;
 }
 
@@ -39,7 +40,7 @@ void NoiseGateData::process(juce::AudioBuffer<float>& buffer)
             calculateEnvelope(channelData[sample]);
 
             if (juce::Decibels::gainToDecibels(envelope) < threshold)
-                currentGain = currentGain * releaseCoeff;
+                currentGain *= releaseCoeff;
             else
                 currentGain = 1.0f - (1.0f - currentGain) * attackCoeff;
 
@@ -51,7 +52,10 @@ void NoiseGateData::process(juce::AudioBuffer<float>& buffer)
 void NoiseGateData::calculateEnvelope(float sample)
 {
     float absSample = std::abs(sample);
-    envelope = std::max(envelope * 0.99f, absSample);
+    if (absSample > envelope)
+        envelope = absSample + attackTime * (envelope - absSample);
+    else
+        envelope = absSample + releaseTime * (envelope - absSample);
 }
 
 void NoiseGateData::updateValue(float newThreshold)
