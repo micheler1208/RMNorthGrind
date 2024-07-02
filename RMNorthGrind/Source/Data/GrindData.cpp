@@ -40,8 +40,7 @@ void GrindData::process(juce::AudioBuffer<float>& buffer)
 void GrindData::updateValue(float newGrind)
 {
     grind = newGrind;
-    float gainInDb = juce::Decibels::gainToDecibels(grind);
-    processorChain.get<0>().setGainDecibels(gainInDb);
+    processorChain.get<0>().setGainLinear(grind);
 }
 
 // RESET
