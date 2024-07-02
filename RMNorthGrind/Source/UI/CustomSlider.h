@@ -27,18 +27,21 @@ public:
 protected:
     juce::String getTextFromValue(double value) override
     {
+        juce::String prefix;
         juce::String suffix;
         juce::String textValue;
 
         if (getName() == "NoiseGate")
         {
+            prefix = "";
             suffix = " db";
             textValue = juce::String(value, numDecimalPlaces);
         }
         else if ( getName() == "Grind")
         {
+            prefix = "+";
             suffix = " db";
-            textValue = juce::String(value, 0);
+            textValue = juce::String(value, numDecimalPlaces);
         }
 
         return textValue + suffix;
