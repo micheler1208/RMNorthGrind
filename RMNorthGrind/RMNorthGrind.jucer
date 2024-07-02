@@ -58,12 +58,12 @@
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"
-               JUCE_ASIO="1"/>
+               JUCE_ASIO="1" JUCE_PLUGINHOST_VST3="1"/>
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="NorthGrind" headerPath="C:\D\MIKE-VST\WORKSPACE JUCE\JUCE\modules\asioCommon"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="NorthGrind" headerPath="C:\D\MIKE-VST\WORKSPACE JUCE\JUCE\modules\asioCommon"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="RMNorthGrind" headerPath="C:\D\MIKE-VST\WORKSPACE JUCE\JUCE\modules\asioCommon"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="RMNorthGrind" headerPath="C:\D\MIKE-VST\WORKSPACE JUCE\JUCE\modules\asioCommon"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
