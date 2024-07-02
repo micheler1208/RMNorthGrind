@@ -25,9 +25,9 @@ private:
 
     using Gain = juce::dsp::Gain<float>;
     using HighPassFilter = juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>>;
-    using FixedEQFilter = juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>>;
+    using PeakEQFilter = juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>>;
 
-    juce::dsp::ProcessorChain<Gain, HighPassFilter, FixedEQFilter> processorChain;
+    juce::dsp::ProcessorChain<Gain, HighPassFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter> processorChain;
     void updateFilters(double sampleRate);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GrindData)

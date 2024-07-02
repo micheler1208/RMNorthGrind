@@ -37,7 +37,7 @@ protected:
         }
         else if ( getName() == "Grind")
         {
-            suffix = " %";
+            suffix = " db";
             textValue = juce::String(value, 0);
         }
 
@@ -48,11 +48,6 @@ protected:
     {
         auto valueStr = text.upToFirstOccurrenceOf(" ", false, false);
         auto value = valueStr.getDoubleValue();
-
-        if (getName() == "Grind")
-        {
-        }
-
         return value;
     }
 

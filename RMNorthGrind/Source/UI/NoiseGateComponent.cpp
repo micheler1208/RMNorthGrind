@@ -21,7 +21,7 @@ NoiseGateComponent::NoiseGateComponent(juce::AudioProcessorValueTreeState& apvts
     noiseGateSlider.setLookAndFeel(&customLookAndFeelGrind);
     noiseGateSlider.setName("NoiseGate");
     noiseGateSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
-    noiseGateSlider.setRange(0.0, 1.0, 0.01);
+    noiseGateSlider.setRange(-96.0, 0.0, 0.01);
     noiseGateSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
     addAndMakeVisible(&noiseGateSlider);
     noiseGateAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "NOISEGATE", noiseGateSlider);

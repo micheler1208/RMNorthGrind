@@ -21,7 +21,7 @@ GrindComponent::GrindComponent(juce::AudioProcessorValueTreeState& apvts)
     grindSlider.setLookAndFeel(&customLookAndFeelGrind);
     grindSlider.setName("Grind");
     grindSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
-    grindSlider.setRange(1.0, 5.0, 0.1);
+    grindSlider.setRange(1.0, 20.0, 0.1);
     grindSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
     addAndMakeVisible(&grindSlider);
     grindAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "GRIND", grindSlider);
