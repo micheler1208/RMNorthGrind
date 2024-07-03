@@ -29,6 +29,11 @@ private:
 
     juce::dsp::ProcessorChain<Gain, HighPassFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter> processorChain;
     void updateFilters(double sampleRate);
+    
+    float processFET(float inputSample);
+    float fetThreshold;
+    float fetSaturation;
+    float fetGain;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GrindData)
 };

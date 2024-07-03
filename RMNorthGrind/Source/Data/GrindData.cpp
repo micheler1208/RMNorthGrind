@@ -6,13 +6,11 @@
 
   ==============================================================================
 */
-
-
 #include "GrindData.h"
 
 // COSTRUCTOR
 GrindData::GrindData()
-    : grind(1.0f)
+    : grind(1.0f), fetThreshold(0.7f), fetSaturation(5.0f), fetGain(1.1f)
 {
 }
 
@@ -30,10 +28,43 @@ void GrindData::prepareToPlay(juce::dsp::ProcessSpec spec)
 // PROCESS BLOCK
 void GrindData::process(juce::AudioBuffer<float>& buffer)
 {
+    juce::ScopedNoDenormals noDenormals;
+    auto numSamples = buffer.getNumSamples();
+
+    for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
+    {
+        auto* channelData = buffer.getWritePointer(channel);
+
+        for (int sample = 0; sample < numSamples; ++sample)
+        {
+            // Process through FET model
+            float fetProcessedSample = processFET(channelData[sample]);
+
+            // Apply EQ and Gain
+            channelData[sample] = fetProcessedSample;
+        }
+    }
+
     juce::dsp::AudioBlock<float> block(buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
-
     processorChain.process(context);
+}
+
+// PROCESS FET MODEL
+float GrindData::processFET(float inputSample)
+{
+    float outputSample = inputSample * fetGain;
+
+    if (outputSample > fetThreshold)
+    {
+        outputSample = fetThreshold + (outputSample - fetThreshold) / fetSaturation;
+    }
+    else if (outputSample < -fetThreshold)
+    {
+        outputSample = -fetThreshold + (outputSample + fetThreshold) / fetSaturation;
+    }
+
+    return outputSample;
 }
 
 // UPDATE VALUES
@@ -65,7 +96,7 @@ void GrindData::updateFilters(double sampleRate)
     auto& peak10 = processorChain.get<11>();
 
     // High Pass Filter
-    auto highPassCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighPass(sampleRate, 10.0f, 0.4f); 
+    auto highPassCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighPass(sampleRate, 10.0f, 0.4f);
     *highPassFilter.state = *highPassCoefficients;
 
     // Fixed Peaks
