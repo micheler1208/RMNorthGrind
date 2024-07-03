@@ -20,8 +20,12 @@ public:
     void reset();
 
 private:
-    bool isPrepared { false };
+    bool isPrepared{ false };
     float grind;
+    float fetThreshold;
+    float fetSaturation;
+    float fetGain;
+    float headroom;
 
     using Gain = juce::dsp::Gain<float>;
     using HighPassFilter = juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>>;
@@ -29,11 +33,9 @@ private:
 
     juce::dsp::ProcessorChain<Gain, HighPassFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter, PeakEQFilter> processorChain;
     void updateFilters(double sampleRate);
-    
+
     float processFET(float inputSample);
-    float fetThreshold;
-    float fetSaturation;
-    float fetGain;
+    float applyFETThreshold(float sample);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GrindData)
 };

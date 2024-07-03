@@ -8,9 +8,9 @@
 */
 #include "GrindData.h"
 
-// COSTRUCTOR
+// CONSTRUCTOR
 GrindData::GrindData()
-    : grind(1.0f), fetThreshold(0.7f), fetSaturation(5.0f), fetGain(1.1f)
+    : grind(1.0f), fetThreshold(0.7f), fetSaturation(5.0f), fetGain(1.1f), headroom(18.0f)
 {
 }
 
@@ -37,7 +37,7 @@ void GrindData::process(juce::AudioBuffer<float>& buffer)
 
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            // Process through FET model
+            // Process through multiple FET stages
             float fetProcessedSample = processFET(channelData[sample]);
 
             // Apply EQ and Gain
@@ -53,18 +53,31 @@ void GrindData::process(juce::AudioBuffer<float>& buffer)
 // PROCESS FET MODEL
 float GrindData::processFET(float inputSample)
 {
-    float outputSample = inputSample * fetGain;
+    // First FET stage
+    float stage1Output = inputSample * fetGain;
+    stage1Output = applyFETThreshold(stage1Output);
 
-    if (outputSample > fetThreshold)
-    {
-        outputSample = fetThreshold + (outputSample - fetThreshold) / fetSaturation;
-    }
-    else if (outputSample < -fetThreshold)
-    {
-        outputSample = -fetThreshold + (outputSample + fetThreshold) / fetSaturation;
-    }
+    // Second FET stage
+    float stage2Output = stage1Output * fetGain;
+    stage2Output = applyFETThreshold(stage2Output);
 
-    return outputSample;
+    // Adjust output for headroom
+    float finalOutput = stage2Output * (headroom / 9.0f);
+
+    return finalOutput;
+}
+
+float GrindData::applyFETThreshold(float sample)
+{
+    if (sample > fetThreshold)
+    {
+        sample = fetThreshold + (sample - fetThreshold) / fetSaturation;
+    }
+    else if (sample < -fetThreshold)
+    {
+        sample = -fetThreshold + (sample + fetThreshold) / fetSaturation;
+    }
+    return sample;
 }
 
 // UPDATE VALUES
